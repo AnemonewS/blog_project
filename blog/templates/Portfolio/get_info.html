@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load popular_posts %}
+{% load menu %}
+{% load static %}
+{% load widget %}
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+    <!--/.Main blog of info-->
+    <section class="blog-index">
+        <div class="container clearfix">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-12 m-bottom-10 ">
+                            <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
+
+                                <div class="blog-post-body">
+                                    <h4><a class="title" href="{{ item.get_absolute_url }}">{{ item.title }}</a></h4>
+                                    {% if item.photo %}
+                                        <img src="{{ item.photo.url }}" alt="">
+                                    {% endif %}
+                                    <hr>
+                                    <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget sodales risus. Donec placerat leo nibh, et volutpat ipsum ultricies at. Nulla lobortis suscipit vulputate. Nullam bibendum posuere sapien, vitae lacinia mi rutrum ac. Vivamus in sodales tortor. Donec a lorem metus. Nam sed aliquet purus, eget tristique nulla. Donec ut lacinia sem.
+                                        <br>
+
+                                        Etiam in nunc sit amet est suscipit hendrerit eget maximus erat. Praesent nec orci ut libero tincidunt vestibulum id et libero. Cras at erat non leo semper hendrerit non in lectus. Morbi cursus, purus pellentesque venenatis mollis, diam ante efficitur augue, et auctor enim erat id nulla. Aliquam vulputate erat ipsum, ut vestibulum nibh imperdiet vel. Nunc quis enim diam. Ut at sem et purus auctor pretium vel id arcu. Suspendisse ac suscipit orci, posuere malesuada lectus. Nam ullamcorper massa tortor, vitae fringilla mi suscipit eget. Mauris magna ligula, porttitor a mi in, semper tincidunt ligula. Morbi vulputate dolor in purus tincidunt, ut aliquet est accumsan. Sed bibendum placerat bibendum. Maecenas mollis iaculis nibh, quis pharetra enim sollicitudin eget. Vestibulum sed porttitor lacus.
+                                        <br>
+
+                                        Aenean nec purus nisi. Duis at egestas enim. Suspendisse risus nibh, imperdiet id ipsum ut, auctor eleifend arcu. Donec magna diam, viverra quis vestibulum mollis, venenatis id tellus. Morbi laoreet faucibus pellentesque. Maecenas non viverra libero, vulputate sodales eros. Nulla vitae velit auctor turpis tempus gravida. Praesent velit massa, porta non urna sit amet, tincidunt varius lorem. Praesent pellentesque vitae est in congue. In hac habitasse platea dictumst. Nulla dictum quam a porttitor pulvinar.
+                                        <br>
+
+                                        Nulla eu arcu mi. In eu suscipit eros. Nunc porta odio ut est lacinia, at molestie purus viverra. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque arcu sem, hendrerit vel risus vitae, pretium imperdiet augue. Pellentesque pharetra auctor ipsum, vitae placerat ipsum ultrices id. In hac habitasse platea dictumst. Quisque auctor bibendum felis. Etiam volutpat libero euismod mi varius, ut blandit nunc interdum. Maecenas venenatis fringilla mauris varius sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam hendrerit diam libero, eu pretium dui ornare non. Donec sit amet sapien maximus lorem finibus viverra. Morbi molestie, erat sed faucibus fermentum, ex elit imperdiet sapien, sit amet rutrum elit ante ac metus.
+                                        <br>
+
+                                        Sed ipsum nulla, ultricies non gravida scelerisque, aliquam quis elit. Cras rutrum dolor et velit lacinia ornare. Vivamus porttitor vulputate efficitur. Donec ut interdum massa. Morbi ac egestas quam. Quisque vitae risus ornare, porta lorem ac, pulvinar ante. Cras dictum in risus nec consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras suscipit est eget nisl venenatis auctor. Maecenas et pretium justo, eleifend placerat dui. Maecenas ultrices risus arcu, nec viverra erat viverra tincidunt.
+                                        <br>
+
+                                        Integer cursus nec lacus in malesuada. Nullam at nunc varius, malesuada odio sagittis, consequat mauris. Phasellus neque magna, efficitur suscipit tincidunt vitae, volutpat sed lorem. Vestibulum id sem et ante dapibus dignissim id ullamcorper turpis. Donec rhoncus rhoncus dictum. Aliquam euismod quam risus, nec consequat lorem auctor at. Fusce arcu est, molestie sit amet turpis sit amet, vulputate semper massa. Quisque ullamcorper pulvinar turpis, eu pharetra elit pulvinar ac. Nullam tempus lorem ac diam rhoncus dictum.
+                                        <br>
+
+                                        Vestibulum ornare non massa malesuada tempus. Proin molestie ipsum vitae augue maximus, blandit suscipit eros gravida. Aliquam pellentesque orci neque, a pharetra elit auctor eu. Maecenas diam diam, egestas vel condimentum in, tincidunt in eros. Curabitur tempor massa ac massa congue imperdiet. Etiam gravida lacus sapien, quis luctus nulla venenatis ut. Sed urna mi, tempor nec est id, ultricies tincidunt sem. Cras ornare odio quis nisi accumsan fermentum. Integer tempor sagittis semper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse placerat non arcu eget cursus. Sed orci ante, maximus et elit facilisis, blandit lacinia odio. Vestibulum suscipit finibus arcu. Morbi ex eros, molestie at euismod eget, porta in nisi. Proin vulputate varius tortor et egestas.
+                                        <br>
+
+                                        Morbi efficitur augue et nisl euismod, eget sagittis dui mattis. Praesent auctor massa rutrum arcu fermentum, id convallis magna feugiat. Maecenas ut erat at sem maximus tempus eu nec lorem. Integer elit tellus, gravida id nisl vitae, efficitur aliquet erat. Donec eu nibh quis nisl eleifend porttitor a sed ante. Mauris eget sollicitudin dui. Donec ut ornare velit. Duis porttitor pharetra ligula, at tincidunt enim vehicula ut. Nulla ut erat sagittis, dictum nisl ut, semper nisl.
+                                        <br>
+
+                                        Sed vel commodo est. Donec aliquet accumsan turpis, sed sodales sapien maximus quis. Mauris facilisis, ligula quis vehicula tempor, dui nisl elementum turpis, a sagittis tellus nunc aliquet ipsum. Aliquam dapibus convallis ligula. Vivamus venenatis tristique vestibulum. Etiam commodo maximus augue, sed ultricies dui pretium eget. Sed varius nibh blandit auctor vehicula. Fusce consequat odio leo, at vulputate odio lacinia quis. Ut sit amet auctor quam. Maecenas in lectus eleifend, imperdiet neque a, viverra odio. Curabitur sodales vel orci et pulvinar. Ut eget tincidunt sem.
+                                        <br>
+
+                                        In hac habitasse platea dictumst. Nunc elementum nisl ut nulla mattis dictum. In ac eleifend sapien. Morbi et lorem et augue dictum auctor vel quis lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non magna ex. Ut tempor in arcu sit amet efficitur. Suspendisse auctor tortor ut leo lobortis, at consectetur lacus lobortis. Phasellus eros diam, fermentum eget elit in, mattis bibendum nunc.
+                                        <br>
+                                    </h6>
+                                    <hr>
+                                    <button type="button" class="btn btn-secondary btn-sm">
+                                        <a href="{% url 'home' %}" class="read-more">На главную страницу >></a>
+                                    </button>
+                                </div><!--post body-->
+                            </div> <!-- /.blog -->
+                        </div> <!-- /.inner-col -->
+
+                    </div> <!-- /.Main-info -->
+                </div> <!-- /.col -->
+            </div> <!-- /.col -->
+        </div> <!-- /.row -->
+    </section>
+{% endblock %}

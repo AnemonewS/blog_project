@@ -1,0 +1,41 @@
+{% load popular_posts %}
+{% load menu %}
+{% load widget %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h4 class="title-audio-n text-center m-top-50 m-bottom-45">
+        Недавние
+    </h4>
+    <div class="row" style="font-family:'Montserrat','sans-serif'; padding: 10px 25px">
+        {% for item in similar %}
+            <div class="col-md-3 p-1-0 m-bottom-15">
+                <div class="b1-hidden w200 resemzii-1 similar">
+                    <div class="similar-img">
+                        <a title="{{ item.title }}" href="{{ item.get_absolute_url }}">
+                            {% if item.photo %}
+                                <img src="{{ item.photo.url }}" alt="">
+                            {% else %}
+                                <img src="https://picsum.photos/536/354" alt="">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="b1-name-n-3-text" style="text-align: left">
+                        <div class="relise-n-4">
+                            <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                        </div>
+                        <p class="single-n-4">
+                            <!--/. Disruption -->
+                        </p>
+                        <p class="date-n-2 text-center color-black format-p-1 bl-name-post similar-text" style="text-align: left">
+                            "Автор":
+                            <a class="author" href="{% url 'home' %}">
+                                Anemone
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

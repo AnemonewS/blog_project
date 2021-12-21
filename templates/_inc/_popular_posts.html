@@ -1,0 +1,15 @@
+<div class="widget">
+    <h4>Popular posts</h4>
+    <hr>
+    {% for post in posts %}
+        {% if post.photo %}
+            <img src="{{ post.photo.url }}" alt="">
+        {% endif %}
+        <hr>
+        <div class="portfolio-text">
+            <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+        </div>
+        <hr>
+        <!-- /.portfolio-text -->
+    {% endfor %}
+</div> <!--End widget-->
