@@ -2,6 +2,7 @@ import django_filters
 from rest_framework import generics, permissions, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAdminUser
 
 from blog.models import Post
 from django_filters.rest_framework import DjangoFilterBackend
@@ -14,6 +15,8 @@ from .serializers import *
 
 # Class with general info APIView
 class PostListView(APIView):
+    permission_classes = [IsAdminUser]
+
     def get(self, request):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
@@ -26,11 +29,12 @@ class PostDetailView(APIView):
         post = Post.objects.get(id=pk)
         serializer = PostDetailSerializer(post)
         return Response(serializer.data)
-#
-#
+
 
 # Class with create of Post APIView
 class CreatePostView(APIView):
+    permission_classes = [IsAdminUser]
+
     def post(self, request):
         post = CreatePostSerializer(data=request.data)
         if post.is_valid():
@@ -102,6 +106,6 @@ class TagsListView(generics.ListAPIView):
 
 
 class CreateCategoryView(generics.CreateAPIView):
-
+    permission_classes = [IsAdminUser]
     serializer_class = CreateCategoriesSerializer
 
