@@ -86,20 +86,6 @@ class GetCategoryView(ListView):
         return Post.objects.select_related("category").filter(category__slug=self.kwargs["slug"])
 
 
-class GetTagView(ListView):
-    template_name = "Portfolio/home_page.html"
-    context_object_name = "main_page"
-    paginate_by = 2
-
-    def get_queryset(self):
-        return Post.objects.filter(tags__slug=self.kwargs["slug"])
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = Category.objects.get(id=self.kwargs['categories_id'])
-        return context
-
-
 class SearchField(ListView):
     template_name = '_inc/_search_field.html'
     context_object_name = 'results'

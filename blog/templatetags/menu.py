@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Category, Tag, Post
+from blog.models import Category
 
 
 register = template.Library()
@@ -15,9 +15,3 @@ def show_menu(menu_class="menu"):
 # def show_widget(widget_class = "widget"):
 #     categories = Category.objects.all()
 #     return {"categories":categories,"widget_class": widget_class}
-
-
-@register.inclusion_tag("_inc/_tag.html")
-def show_tag(tag_class="tag"):
-    tag = Tag.objects.all()
-    return {"tag": tag, "tag_class": tag_class}

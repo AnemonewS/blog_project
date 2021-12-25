@@ -29,10 +29,12 @@
                                             <img src="{{ item.photo.url }}" alt="">
                                         {% endif %}
                                         <hr>
-                                        <p class="#"><h5>{{ item.content|safe|truncatewords:25 }}</h5></p>
+                                        <h6>{{ item.content|safe|truncatewords:25 }}</h6>
                                         <hr>
-                                        <p class="#"><h6>{{ item.subscription|safe|truncatewords:25 }}</h6></p>
-                                        <a href="{{ item.get_absolute_url }}" class="read-more">Read More >></a>
+                                        <h4>{{ item.subscription|safe|truncatewords:25 }}</h4>
+                                        <button type="button" class="btn btn-secondary btn-sm">
+                                            <a href="{{ item.get_absolute_url }}" class="read-more">Read More >></a>
+                                        </button>
                                     </div><!--post body-->
                                 </div> <!-- /.blog -->
                             </div> <!-- /.inner-col -->

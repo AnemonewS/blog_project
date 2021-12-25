@@ -24,7 +24,6 @@
 
                                     <div class="blog-post-info clearfix">
                                         <span class="time"><i class="fa fa-calendar"></i>{{ item.created_at }}</span>
-                                        <span class="comments"><a href="#"><i class="fa fa-comments"></i>{{ item.comments }}</a></span>
                                     </div><!--post info-->
 
                                     <div class="blog-post-body">
@@ -34,9 +33,9 @@
                                             <img src="{{ item.photo.url }}" alt="">
                                         {% endif %}
                                         <hr>
-                                        <h5>{{ item.content|safe|truncatewords:25 }}</h5>
+                                        <h6>{{ item.content|safe|truncatewords:25 }}</h6>
                                         <hr>
-                                        <h6>{{ item.subscription|safe|truncatewords:25 }}</h6>
+                                        <h4>{{ item.subscription|safe|truncatewords:25 }}</h4>
                                         <hr>
                                         <button type="button" class="btn btn-secondary btn-sm">
                                             <a href="{{ item.get_absolute_url }}" class="read-more">Прочитать полностью >></a>

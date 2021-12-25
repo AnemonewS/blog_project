@@ -15,28 +15,25 @@
                     <div class="row">
                         <div class="col-xs-12 m-bottom-10 ">
                             <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
-
                                 <div class="blog-post-info clearfix">
                                     <span class="time"><i class="fa fa-calendar"></i>{{ post.created_at }}</span>
-                                    <span class="comments"><a href="#"><i class="fa fa-comments"></i>{{ item.comments }}</a></span>
                                 </div><!--post info-->
 
                                 <div class="blog-post-body">
                                     <h4><a class="title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-                                    <hr>
                                     {% if post.photo %}
                                         <img src="{{ post.photo.url }}" alt="">
                                     {% endif %}
                                     <hr>
-                                    <h5>{{ post.content|safe|linebreaksbr }}</h5>
+                                    <h6>{{ post.content|safe|linebreaksbr|linebreaksbr }}</h6>
                                     <hr>
-                                    <h6>{{ post.subscription|safe }}</h6>
+                                    <h4>{{ post.subscription|safe }}</h4>
                                     <hr>
                                     <button type="button" class="btn btn-secondary btn-sm">
                                         <a href="{% url 'home' %}" class="read-more">На главную</a>
                                     </button>
                                 </div><!--post body-->
-                            {% get_similar %}
+                                {% get_similar %}
                             </div> <!-- /.blog -->
                         </div> <!-- /.inner-col -->
 

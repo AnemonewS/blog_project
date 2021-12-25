@@ -32,22 +32,6 @@ class Category(models.Model):
         ordering = ["title"]
 
 
-class Tag(models.Model):
-    title = models.CharField(max_length=69, verbose_name="Имя")
-    slug = models.SlugField(max_length=69, verbose_name="URL", unique=True, null=True)
-
-    def get_absolute_url(self):
-        return reverse("tag", kwargs={"slug": self.slug})
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = "Тег"
-        verbose_name_plural = "Теги"
-        ordering = ["title"]
-
-
 class Post(models.Model):
     title = models.CharField(max_length=150, verbose_name="Заголовок")
     slug = models.SlugField(max_length=150, verbose_name="URL", null=True)
@@ -57,7 +41,6 @@ class Post(models.Model):
     comments = models.TextField(verbose_name="Комментарии", blank=True)
     subscription = models.TextField(verbose_name="Описание", blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категории", null=True, blank=True, related_name="post")
-    tags = models.ManyToManyField(Tag, blank=True, related_name="posts")
     views = models.IntegerField(default=0, verbose_name="Просмотры")
 
     def get_absolute_url(self):

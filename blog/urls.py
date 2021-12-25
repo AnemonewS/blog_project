@@ -19,7 +19,6 @@ urlpatterns = [
     path('', HomePageView.as_view(), name="home"),
     path('category/<str:slug>/', GetCategoryView.as_view(), name="category"),
 
-    path('tag/<str:slug>', GetTagView.as_view(), name="tag"),
     path('search/', SearchField.as_view(), name="search"),
 
 ]

@@ -35,25 +35,11 @@ class CreatePostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class CreateTagSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Tag
-        fields = "__all__"
-
-
 class CategoriesListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
         fields = ("title","slug")
-
-
-class TagsListSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Tag
-        fields = "__all__"
 
 
 class CreateCategoriesSerializer(serializers.ModelSerializer):

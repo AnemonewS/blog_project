@@ -21,7 +21,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'created_at', 'category', 'get_photo', "views")
     list_filter = ('category', "created_at")
     readonly_fields = ('created_at', 'get_photo')
-    fields = ('title', 'slug', 'content', 'subscription', 'category', 'tags', 'photo', 'get_photo', 'created_at', 'views')
+    fields = ('title', 'slug', 'content', 'subscription', 'category', 'photo', 'get_photo', 'created_at', 'views')
     save_as = True
     save_on_top = True
 
@@ -32,10 +32,6 @@ class PostAdmin(admin.ModelAdmin):
             return mark_safe(f"<img class='' src = '{obj.photo.url}'width = '50'>")
         return "None"
     get_photo.short_description = "Миниатюра"
-
-
-class TagAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
 
 
 class CategoryAdmin(admin.ModelAdmin):
