@@ -21,7 +21,7 @@ class PostListViewSet(viewsets.ViewSet):
 
 
 class CreateTagsView(generics.CreateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
 
     serializer_class = CreateTagSerializer
 
@@ -45,6 +45,6 @@ class TagsListView(generics.ListAPIView):
 
 
 class CreateCategoryView(generics.CreateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
     serializer_class = CreateCategoriesSerializer
 
