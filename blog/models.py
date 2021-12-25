@@ -1,20 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-"""
-    Post
-    =============
-    title, slug, photo, archives, created_at, content, comments, tags, category, 
-    
-    Tag
-    =============
-    title, slug 
-    
-    Category
-    =============
-    title, slug
-"""
-
 
 class Category(models.Model):
     title = models.CharField(max_length=150, verbose_name="Имя")

@@ -15,6 +15,7 @@ class CKAdmin(forms.ModelForm):
         fields = "__all__"
 
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     form = CKAdmin
@@ -24,8 +25,6 @@ class PostAdmin(admin.ModelAdmin):
     fields = ('title', 'slug', 'content', 'subscription', 'category', 'photo', 'get_photo', 'created_at', 'views')
     save_as = True
     save_on_top = True
-
-    # save_as_continue = True
 
     def get_photo(self, obj):
         if obj.photo:
@@ -49,6 +48,4 @@ class SimilarAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Tag, TagAdmin)
-admin.site.register(Post, PostAdmin)
 admin.site.register(Similar, SimilarAdmin)
