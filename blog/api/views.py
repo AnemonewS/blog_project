@@ -1,29 +1,34 @@
-import django_filters
-from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions, viewsets
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from .serializers import *
 
-class PostListViewSet(viewsets.ViewSet):
-    def list(self, request):
-        queryset = Post.objects.all()
-        serializer = PostSerializer(queryset, many=True)
-        return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
-        queryset = Post.objects.all()
-        post = get_object_or_404(queryset, pk=pk)
-        serializer = PostDetailSerializer(post)
-        return Response(serializer.data)
-
-
-class CreateTagsView(generics.CreateAPIView):
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
     permission_classes = [IsAdminUser]
 
-    serializer_class = CreateTagSerializer
+    def get_permissions(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return [AllowAny()]
+        return super(PostViewSet, self).get_permissions()
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return PostDetailSerializer
+        return super(PostViewSet, self).get_serializer_class()
+
+
+class TagsViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagsListSerializer
+    permission_classes = [IsAdminUser]
+
+    def get_permissions(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return [AllowAny()]
+        return super(TagsViewSet, self).get_permissions()
 
 
 class CategoriesListView(generics.ListAPIView):
@@ -35,16 +40,6 @@ class CategoriesListView(generics.ListAPIView):
         return categories
 
 
-class TagsListView(generics.ListAPIView):
-
-    serializer_class = TagsListSerializer
-
-    def get_queryset(self):
-        tags = Tag.objects.all()
-        return tags
-
-
 class CreateCategoryView(generics.CreateAPIView):
     permission_classes = [IsAdminUser]
     serializer_class = CreateCategoriesSerializer
-

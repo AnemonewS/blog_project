@@ -7,12 +7,11 @@ from .yasg import urlpatterns as doc_urls
 urlpatterns = [
     path('a/', admin.site.urls),
     path('', include('blog.urls')),
-    path('ckeditor/',include('ckeditor_uploader.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path("api/", include("blog.api.urls")),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.authtoken")),
     path("auth/", include("djoser.urls.jwt")),
-
 ]
 
 urlpatterns += doc_urls
@@ -25,4 +24,4 @@ if settings.DEBUG:
 
     ]+urlpatterns
 
-urlpatterns+= static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL,  document_root=settings.MEDIA_ROOT)
