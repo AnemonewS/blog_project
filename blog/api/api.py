@@ -1,10 +1,11 @@
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from blog.models import Post, Tag
-from .serializers import PostSerializer, PostDetailSerializer, TagsListSerializer
+from .serializers import PostSerializer, PostDetailSerializer, TagsListSerializer, CreatePostSerializer
 
 
 class PostViewSet(viewsets.ViewSet):
@@ -20,8 +21,17 @@ class PostViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 
+class CreatePostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = CreatePostSerializer
+
+
 class TagsReadOnly(viewsets.ViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagsListSerializer
+    permission_classes = [IsAuthenticated]
+
+
+
 
 

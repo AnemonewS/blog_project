@@ -17,13 +17,9 @@ urlpatterns = [
 
     # Class forms
     path('', HomePageView.as_view(), name="home"),
-    # path('view_news/<str:slug>', ViewBlog.as_view(), name="view_news"),
     path('category/<str:slug>/', GetCategoryView.as_view(), name="category"),
 
     path('tag/<str:slug>', GetTagView.as_view(), name="tag"),
     path('search/', SearchField.as_view(), name="search"),
-
-
-    # path("api/", include("blog.api.urls")),
 
 ]

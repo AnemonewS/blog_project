@@ -9,11 +9,6 @@ from .forms import UserRegisterForm, LoginForm
 from .forms import AddNews
 
 
-# class AddNewsForm(CreateView):
-#     template_name = "blog/add_news_form.html"
-#     form_class = AddNews
-#     raise_exception = True
-
 def add_news_form(request):
     if request.method == "POST":
         form = AddNews(request.POST)
@@ -71,14 +66,6 @@ class HomePageView(ListView):  # Основная страница
         return context
 
 
-# class SimilarView(ListView):
-#     model = Similar
-#     template_name = "Portfolio/similar_post.html"
-#     context_object_name = "similar"
-#
-#     def get_queryset(self):
-#         return Similar.objects.select_related("category").filter(title__slug=self.kwargs["slug"])
-
 def similar_post(request, similar_id):
     similar = Similar.objects.get(id=similar_id)
     return render(request, "Portfolio/similar_post.html", {"similar":similar})
@@ -87,12 +74,6 @@ def similar_post(request, similar_id):
 def view_post(request, views_id):
     post = Post.objects.select_related("category").get(id=views_id)
     return render(request, "Portfolio/view_post.html", {"post": post})
-
-
-# class ViewBlog(DetailView):  # Наша отдельная категория
-#     model = Post
-#     template_name = "blog/view_category.html"
-#     context_object_name = "view"
 
 
 class GetCategoryView(ListView):
@@ -125,6 +106,7 @@ class SearchField(ListView):
     paginate_by = 2
 
     def get_queryset(self):
+
         return Post.objects.filter(title__icontains=self.request.GET.get('s'))
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -137,10 +119,3 @@ def get_info(request):
     post = Post.objects.all()
 
     return render(request, 'Portfolio/get_info.html', {"post": post})
-
-# def get_category(request,slug):
-#     return render(request,'blog/category_get.html')
-
-
-# def get_tag(request, slug):
-#     return render(request, '_inc/_tag.html')
