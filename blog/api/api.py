@@ -24,6 +24,7 @@ class PostViewSet(viewsets.ViewSet):
 class CreatePostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = CreatePostSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class TagsReadOnly(viewsets.ViewSet):
