@@ -18,6 +18,14 @@ class Category(models.Model):
         ordering = ["title"]
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     title = models.CharField(max_length=150, verbose_name="Заголовок")
     slug = models.SlugField(max_length=150, verbose_name="URL", null=True)
@@ -28,6 +36,7 @@ class Post(models.Model):
     subscription = models.TextField(verbose_name="Описание", blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категории", null=True, blank=True, related_name="post")
     views = models.IntegerField(default=0, verbose_name="Просмотры")
+    tags = models.ManyToManyField(Tag, related_name="post")
 
     def get_absolute_url(self):
         return reverse("post", kwargs={"views_id": self.id})
@@ -58,3 +67,14 @@ class Similar(models.Model):
         verbose_name = "Похожий"
         verbose_name_plural = "Похожие"
         ordering = ["id"]
+
+
+class ContactModel(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    website = models.URLField(blank=True, null=True)
+    message = models.TextField(max_length=5500)
+    create_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.email}"

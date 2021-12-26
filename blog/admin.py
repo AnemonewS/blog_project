@@ -33,10 +33,12 @@ class PostAdmin(admin.ModelAdmin):
     get_photo.short_description = "Миниатюра"
 
 
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
+@admin.register(Similar)
 class SimilarAdmin(admin.ModelAdmin):
     list_display = ("title", "subscriptions", "get_photo")
 
@@ -47,5 +49,11 @@ class SimilarAdmin(admin.ModelAdmin):
     get_photo.short_description = "Миниатюра"
 
 
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Similar, SimilarAdmin)
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ("name", "slug")
+
+
+@admin.register(ContactModel)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ("name", "message", "email", "website", "create_at")

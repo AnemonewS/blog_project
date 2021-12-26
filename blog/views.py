@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth import login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
 from .models import *
-from .forms import UserRegisterForm, LoginForm
-from .forms import AddNews
+from .forms import UserRegisterForm, LoginForm, ContactForm, AddNews
 
 
 def add_news_form(request):
@@ -105,3 +102,9 @@ def get_info(request):
     post = Post.objects.all()
 
     return render(request, 'Portfolio/get_info.html', {"post": post})
+
+
+class FeedbackView(CreateView):
+    form_class = ContactForm
+    success_url = '/'
+    template_name = 'Portfolio/get_info.html'

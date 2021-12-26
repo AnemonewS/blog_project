@@ -31,7 +31,7 @@ body {
 body {
   background: #fff;
   font-size: 14px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', Montserrat;
   color: #767676;
 }
 a {
@@ -52,6 +52,7 @@ ul,
 li {
   list-style: none;
   padding: 0;
+  text-transform: uppercase;
 }
 img {
   width: 100%;
@@ -508,6 +509,7 @@ h5 {
 h6 {
   font-size: 14px;
   line-height: 1.6;
+  text-transform: none;
 }
 p {
   line-height: 1.8em;
@@ -696,12 +698,14 @@ blockquote {
 }
 .m-bottom-20 {
   margin-bottom: 20px;
+  text-transform: none;
 }
 .m-bottom-30 {
   margin-bottom: 30px;
 }
 .m-bottom-40 {
   margin-bottom: 40px;
+
 }
 .m-bottom-50 {
   margin-bottom: 50px;
@@ -838,7 +842,7 @@ blockquote {
   line-height: 70px;
   color: #fff;
   font-size: 13px;
-  text-transform: uppercase;
+  text-transform: none;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -865,6 +869,7 @@ blockquote {
 }
 .nav-solid .navbar-nav > li > a {
   color: #434343;
+  text-transform: none;
 }
 .nav-solid .navigation {
   position: fixed;
@@ -1557,9 +1562,13 @@ blockquote {
 }
 .blog-post-body {
   padding: 15px 25px 25px;
+  text-transform: none;
+}
+.blog-post-body h6{
+  text-transform: none;
 }
 .blog-post-body h4 {
-  text-transform: capitalize;
+  text-transform: none;
 }
 .blog-post-body h4 a {
   color: #5d5d5d;
@@ -1719,6 +1728,7 @@ blockquote {
 }
 .widget h4 {
   margin-bottom: 20px;
+  text-transform: none;
 }
 .widget .search-form {
   position: relative;
@@ -1753,7 +1763,8 @@ blockquote {
 .widget .meta li {
   border-bottom: 1px solid #ebebeb;
   line-height: 30px;
-  padding: 5px 0;
+  padding: 10px 0;
+  text-transform: none;
 }
 .widget .cat-list li a,
 .widget .cat-archives li a,
@@ -2218,6 +2229,7 @@ blockquote {
   width: 300px;
   height: auto;
 }
+
 
 /*--------------------------------------------------
     **. Responsive {should come last}
