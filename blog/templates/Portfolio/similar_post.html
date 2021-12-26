@@ -15,10 +15,13 @@
                     <div class="row">
                         <div class="col-xs-12 m-bottom-10 ">
                             <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
-
                                 <div class="blog-post-body">
+                                    <button type="button" class="btn btn-secondary btn-sm">
+                                        <a href="{% url 'home' %}" class="read-more">На главную</a>
+                                    </button>
+                                    <hr>
                                     <h4><a class="title" href="{{ similar.get_absolute_url }}">{{ similar.title }}</a></h4>
-                                <p>{{ similar.artist }}</p>
+                                    <p>{{ similar.artist }}</p>
                                     <hr>
                                     {% if similar.photo %}
                                         <img src="{{ similar.photo.url }}" alt="">
@@ -30,15 +33,15 @@
                                         <a href="{% url 'home' %}" class="read-more">На главную</a>
                                     </button>
                                 </div><!--post body-->
-                            {% get_similar %}
+                                {% get_similar %}
                             </div> <!-- /.blog -->
                         </div> <!-- /.inner-col -->
 
                     </div> <!-- /.Main-info -->
                 </div> <!-- /.col -->
 
-                </div> <!-- /.col -->
-            </div> <!-- /.row -->
+            </div> <!-- /.col -->
+        </div> <!-- /.row -->
         </div>
     </section>
     <!--/.End of main blog -->

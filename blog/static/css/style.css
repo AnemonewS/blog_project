@@ -234,8 +234,8 @@ overlay-light .YTPOverlay:before {
   opacity: 0;
 }
 #back-to-top i {
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   line-height: 32px;
   color: #fff;
   font-size: 20px;
@@ -2241,6 +2241,7 @@ blockquote {
   font-size: 13px;
   min-height: 110px;
 }
+
 
 /*--------------------------------------------------
     **. Responsive {should come last}

@@ -4,6 +4,7 @@
 {% load widget %}
 {% load popular_posts %}
 {% block title %}Отдельные категории{% endblock %}
+
 {#<link rel="shortcut icon" type="image/png" href="{% static 'img/sample1.png' %}">#}
 
 {% block content %}
@@ -23,6 +24,10 @@
                                     </div><!--post info-->
 
                                     <div class="blog-post-body">
+                                        <button type="button" class="btn btn-secondary btn-sm">
+                                            <a href="{% url 'home' %}" class="read-more">На главную</a>
+                                        </button>
+                                    <hr>
                                         <h4><a class="title" href="{{ item.get_absolute_url }}">{{ item.title }}</a></h4>
                                         <hr>
                                         {% if item.photo %}
@@ -50,15 +55,19 @@
                         </form>
                     </div> <!--End widget-->
                     <div class="widget">
-                        <h4>Information field</h4>
+                        <h4>Информация</h4>
+                        <hr>
                         <ul class="meta">
                             {% if request.user.is_authenticated %}
                                 Добро пожаловать, {{ user.username }} | <h6><a href="{% url 'logout' %}">Выйти</a></h6>
+                                <hr>
                                 <h6><a href="{% url 'add_news' %}">Добавить новость</a></h6>
                             {% else %}
                                 <h6><a href="{% url 'register' %}">Регистрация</a></h6>
                                 <h6><a href="{% url 'login' %}">Авторизация</a></h6>
                             {% endif %}
+                            <hr>
+                            <h6><a href="{% url 'feedback' %}">Обратная связь</a></h6>
                         </ul>
                     </div> <!--End widget-->
                     {% get_widget %}

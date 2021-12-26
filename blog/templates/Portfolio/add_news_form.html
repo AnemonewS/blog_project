@@ -9,7 +9,7 @@
         <form action="{% url 'add_news' %}" class="mt-2" method="post">
             {{ form.as_p }}
             {% csrf_token %}
-            <button type="submit" class="btn btn-outline-success">Добавить новость</button>
+            <button type="submit" class="btn btn-outline-success">Добавить новость</button> | <button type="button" class="btn btn-light"><a href="{% url 'home' %}">На главную</a></button>
         </form>
     </div>
 {% endblock %}

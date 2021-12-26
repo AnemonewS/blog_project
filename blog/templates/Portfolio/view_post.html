@@ -20,6 +20,9 @@
                                 </div><!--post info-->
 
                                 <div class="blog-post-body">
+                                    <button type="button" class="btn btn-secondary btn-sm">
+                                        <a href="{% url 'home' %}" class="read-more">На главную</a>
+                                    </button>
                                     <h4><a class="title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
                                     {% if post.photo %}
                                         <img src="{{ post.photo.url }}" alt="">
@@ -53,15 +56,19 @@
                         {{ empty }}
                         <!-- Widget 2 -->
                         <div class="widget">
-                            <h4>Information field</h4>
+                            <h4>Информация</h4>
+                            <hr>
                             <ul class="meta">
                                 {% if request.user.is_authenticated %}
                                     Добро пожаловать, {{ user.username }} | <h6><a href="{% url 'logout' %}">Выйти</a></h6>
+                                    <hr>
                                     <h6><a href="{% url 'add_news' %}">Добавить новость</a></h6>
                                 {% else %}
                                     <h6><a href="{% url 'register' %}">Регистрация</a></h6>
                                     <h6><a href="{% url 'login' %}">Авторизация</a></h6>
                                 {% endif %}
+                                <hr>
+                                <h6><a href="{% url 'feedback' %}">Обратная связь</a></h6>
                             </ul>
                         </div> <!--End widget-->
 
