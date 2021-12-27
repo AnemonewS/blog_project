@@ -13,6 +13,7 @@ urlpatterns = [
     # Function forms
     path('add-news/', add_news_form, name="add_news"),
     path('post/<int:views_id>/', view_post, name='post'),
+    path('tags/<str:slug>/', GetTagsView.as_view(), name='tags'),
     path("feedback/", FeedbackView.as_view(), name="feedback"),
 
     # Class forms

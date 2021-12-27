@@ -22,7 +22,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'created_at', 'category', 'get_photo', "views")
     list_filter = ('category', "created_at")
     readonly_fields = ('created_at', 'get_photo')
-    fields = ('title', 'slug', 'content', 'subscription', 'category', 'photo', 'get_photo', 'created_at', 'views')
+    fields = ('title', 'slug', 'content', 'subscription', 'category', 'photo', 'get_photo', 'created_at', 'views', 'tags')
     save_as = True
     save_on_top = True
 

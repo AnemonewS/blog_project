@@ -503,7 +503,7 @@ h5,
 h6 {
   font-family: 'Montserrat', sans-serif;
   color: #434343;
-  text-transform: uppercase;
+  text-transform: none;
   margin-top: 10px;
   margin-bottom: 10px;
   line-height: 1.4em;

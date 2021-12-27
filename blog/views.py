@@ -63,9 +63,24 @@ class HomePageView(ListView):  # Основная страница
         return context
 
 
+class GetTagsView(ListView):
+    model = Post
+    template_name = 'Portfolio/tag_get.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs["slug"])
+
+
+
+# def getTags(request):
+#     tags = Post.objects.all()
+#     return render(request, "Portfolio/tag_get.html", {"tags": tags})
+
+
 def similar_post(request, similar_id):
     similar = Similar.objects.get(id=similar_id)
-    return render(request, "Portfolio/similar_post.html", {"similar":similar})
+    return render(request, "Portfolio/similar_post.html", {"similar": similar})
 
 
 def view_post(request, views_id):
@@ -101,10 +116,10 @@ class SearchField(ListView):
 def get_info(request):
     post = Post.objects.all()
 
-    return render(request, 'Portfolio/get_info.html', {"post": post})
+    return render(request, 'Portfolio/your_opinion.html', {"post": post})
 
 
 class FeedbackView(CreateView):
     form_class = ContactForm
     success_url = '/'
-    template_name = 'Portfolio/get_info.html'
+    template_name = 'Portfolio/your_opinion.html'
