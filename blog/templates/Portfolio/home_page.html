@@ -27,11 +27,12 @@
                                     </div><!--post info-->
 
                                     <div class="blog-post-body subscr">
-                                        <h4><a class="title" href="{{ item.get_absolute_url }}">{{ item.title }}</a></h4>
-                                        <hr>
-                                        {% if item.photo %}
-                                            <img src="{{ item.photo.url }}" alt="">
-                                        {% endif %}
+                                        <h4><a class="title" href="{{ item.get_absolute_url }}">{{ item.title }}
+                                            <hr>
+                                            {% if item.photo %}
+                                                <img src="{{ item.photo.url }}" alt="">
+                                            {% endif %}
+                                        </a></h4>
                                         <hr>
                                         <h6>{{ item.content|safe|truncatewords:25 }}</h6>
                                         <hr>

@@ -41,6 +41,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Similar)
 class SimilarAdmin(admin.ModelAdmin):
     list_display = ("title", "subscriptions", "get_photo")
+    prepopulated_fields = {"slug": ("title",)}
 
     def get_photo(self, obj):
         if obj.photo:
@@ -52,6 +53,7 @@ class SimilarAdmin(admin.ModelAdmin):
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ("name", "slug")
+    prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(ContactModel)
