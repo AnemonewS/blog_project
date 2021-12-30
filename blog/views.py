@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth import login, logout
 from django.contrib import messages
@@ -6,31 +7,17 @@ from .models import *
 from .forms import UserRegisterForm, LoginForm, ContactForm, AddNews
 
 
-def add_news_form(request):
-    if request.method == "POST":
-        form = AddNews(request.POST)
-        if form.is_valid():
-            post = Post.objects.create(**form.cleaned_data)
-            return redirect(post)
-    else:
-        form = AddNews()
-    return render(request, "Portfolio/add_news_form.html", {"form": form})
+class AddNewsView(CreateView):
+    template_name = "Portfolio/add_news_form.html"
+    form_class = AddNews
+    context_object_name = "form"
 
 
-# Registration
-def registerform(request):
-    if request.method == "POST":
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Успешная регистрация!")
-            return redirect("home")
-        else:
-            messages.error(request, "Произошла непредвиденная ошибка!")
-
-    else:
-        form = UserRegisterForm()
-    return render(request,"Portfolio/registration_form.html",{"form":form})
+class RegisterView(CreateView):
+    template_name = "Portfolio/registration_form.html"
+    form_class = UserRegisterForm
+    context_object_name = "form"
+    success_url = reverse_lazy('login')
 
 
 def loginForm(request):
@@ -70,12 +57,6 @@ class GetTagsView(ListView):
 
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs["slug"])
-
-
-
-# def getTags(request):
-#     tags = Post.objects.all()
-#     return render(request, "Portfolio/tag_get.html", {"tags": tags})
 
 
 def similar_post(request, similar_id):

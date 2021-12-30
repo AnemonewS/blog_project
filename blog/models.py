@@ -36,14 +36,13 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=150, verbose_name="Заголовок")
     slug = models.SlugField(max_length=150, verbose_name="URL", null=True)
-    photo = models.ImageField(upload_to="photo/",verbose_name="Фото", blank=True)
+    photo = models.ImageField(upload_to="photo/", verbose_name="Фото", blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Публикация")
     content = models.TextField(verbose_name="Содержание", blank=True)
-    comments = models.TextField(verbose_name="Комментарии", blank=True)
     subscription = models.TextField(verbose_name="Описание", blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категории", null=True, blank=True, related_name="post")
     views = models.IntegerField(default=0, verbose_name="Просмотры")
-    tags = models.ManyToManyField(Tag, related_name="post")
+    tags = models.ManyToManyField(Tag, related_name="post", blank=True)
 
     def get_absolute_url(self):
         return reverse("post", kwargs={"views_id": self.id})

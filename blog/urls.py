@@ -4,14 +4,14 @@ from .views import *
 
 urlpatterns = [
     # Register, login, logout forms
-    path('register/', registerform,name = "register"),
+    path('register/', RegisterView.as_view(), name="register"),
     path('loginForm/', loginForm, name="loginForm"),
     path('logoutForm/', logoutform, name="logoutForm"),
 
     path('similar-post/<int:similar_id>/', similar_post, name="similar"),
 
     # Function forms
-    path('add-news/', add_news_form, name="add_news"),
+    path('add-news/', AddNewsView.as_view(), name="add_news"),
     path('post/<int:views_id>/', view_post, name='post'),
     path('tags/<str:slug>/', GetTagsView.as_view(), name='tags'),
     path("feedback/", FeedbackView.as_view(), name="feedback"),
