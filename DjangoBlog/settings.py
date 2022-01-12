@@ -110,12 +110,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 3
 
 }
-# smtp
-EMAIL_USE_TLS = True
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "paperworldcomm@gmail.com"
-EMAIL_HOST_PASSWORD = "26zerOnine0101brB"
-EMAIL_PORT = 587
+
 
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
