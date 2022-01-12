@@ -6,7 +6,7 @@ from django.utils.html import strip_tags
 class PostSerializer(serializers.ModelSerializer):
 
     category = serializers.SlugRelatedField(slug_field="title", read_only=True)
-    tags = serializers.SlugRelatedField(slug_field="title", read_only=True, many=True)
+    tags = serializers.SlugRelatedField(slug_field="name", read_only=True, many=True)
 
     class Meta:
         model = Post
@@ -16,7 +16,7 @@ class PostSerializer(serializers.ModelSerializer):
 class PostDetailSerializer(serializers.ModelSerializer):
 
     category = serializers.SlugRelatedField(slug_field="title", read_only=True)
-    tags = serializers.SlugRelatedField(slug_field="title", read_only=True, many=True)
+    tags = serializers.SlugRelatedField(slug_field="name", read_only=True, many=True)
 
     class Meta:
         model = Post

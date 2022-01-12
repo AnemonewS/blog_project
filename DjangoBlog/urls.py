@@ -7,8 +7,10 @@ from .yasg import urlpatterns as doc_urls
 urlpatterns = [
     path('a/', admin.site.urls),
     path('', include('blog.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path("api/", include("blog.api.urls")),
+
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.authtoken")),
     path("auth/", include("djoser.urls.jwt")),
