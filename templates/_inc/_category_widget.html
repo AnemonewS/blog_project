@@ -3,7 +3,7 @@
     <ul class="cat-list">
         <div class="{{ widget_class }}">
             <ul class="cat-list">
-                {% for item in category %}
+                {% for item in categories %}
                     <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
                 {% endfor %}
             </ul>

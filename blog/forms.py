@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from .models import *
 
 
-class AddNews(forms.ModelForm):
+class AddNewsForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["title", "content", "subscription", "category", "tags"]
@@ -16,9 +16,6 @@ class AddNews(forms.ModelForm):
             "category": forms.Select(attrs={"class": "form-control", "style": "width: 500px"}),
             "tags": forms.SelectMultiple(attrs={"class": "form-control", "style": "width: 500px"}),
         }
-
-    # tags = forms.ModelMultipleChoiceField(queryset=Post.objects.all(), required=False, widget=forms.
-    #                                       SelectMultiple(attrs={"class": "form-control", "style": "width:200px"}), label="Tag"),
 
     def clean_title(self):
         title = self.cleaned_data["title"]

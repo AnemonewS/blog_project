@@ -3,7 +3,7 @@
 {% load menu %}
 {% load widget %}
 {% block title %}{{ post.title }}{% endblock %}
-{% load similar %}
+{% load recent %}
 
 {% block content %}
 
@@ -20,20 +20,20 @@
                                         <a href="{% url 'home' %}" class="read-more">На главную</a>
                                     </button>
                                     <hr>
-                                    <h4><a class="title" href="{{ similar.get_absolute_url }}">{{ similar.title }}</a></h4>
-                                    <p>{{ similar.artist }}</p>
+                                    <h4><a class="title" href="{{ recent.get_absolute_url }}">{{ recent.title }}</a></h4>
+                                    <p>{{ recent.artist }}</p>
                                     <hr>
-                                    {% if similar.photo %}
-                                        <img src="{{ similar.photo.url }}" alt="">
+                                    {% if recent.photo %}
+                                        <img src="{{ recent.photo.url }}" alt="">
                                     {% endif %}
                                     <hr>
-                                    <h5>{{ similar.subscriptions|safe|linebreaksbr }}</h5>
+                                    <h5>{{ recent.subscriptions|safe|linebreaksbr }}</h5>
                                     <hr>
                                     <button type="button" class="btn btn-secondary btn-sm">
                                         <a href="{% url 'home' %}" class="read-more">На главную</a>
                                     </button>
                                 </div><!--post body-->
-                                {% get_similar %}
+                                {% get_recent %}
                             </div> <!-- /.blog -->
                         </div> <!-- /.inner-col -->
 

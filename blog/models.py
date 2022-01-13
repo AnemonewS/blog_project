@@ -64,7 +64,7 @@ class Similar(models.Model):
     slug = models.SlugField(max_length=69, verbose_name="URL", unique=True, null=True)
 
     def get_absolute_url(self):
-        return reverse("similar", kwargs={"similar_id": self.id})
+        return reverse("recent", kwargs={"recent_id": self.id})
 
     def __str__(self):
         return self.title

@@ -8,7 +8,7 @@ urlpatterns = [
     path('loginForm/', loginForm, name="loginForm"),
     path('logoutForm/', logoutform, name="logoutForm"),
 
-    path('similar-post/<int:similar_id>/', similar_post, name="similar"),
+    path('recent-post/<int:recent_id>/', recent_post, name="recent"),
 
     # Function forms
     path('add-news/', AddNewsView.as_view(), name="add_news"),
@@ -20,6 +20,5 @@ urlpatterns = [
     path('', HomePageView.as_view(), name="home"),
     path('category/<str:slug>/', GetCategoryView.as_view(), name="category"),
 
-    path('search/', SearchField.as_view(), name="search"),
-
+    path('search/', SearchFieldView.as_view(), name="search"),
 ]

@@ -35,7 +35,7 @@ class CreatePostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class CategoriesListSerializer(serializers.ModelSerializer):
+class CategoriesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category

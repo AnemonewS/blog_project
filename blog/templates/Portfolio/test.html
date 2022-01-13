@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <meta name="description" content="Киномонстр - это портал о кино" />
+    <meta name="keywords" content="фильмы, фильмы онлайн, hd" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="main-over"></div>
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2560px-Playstation_logo_colour.svg.png" alt="" id="image">
+        <div class="menu">
+            <ul>
+                <li><a href="#" class="menu-link">Home</a></li>
+                <li><a href="#" class="menu-link">Applications</a></li>
+                <li><a href="#" class="menu-link">Categories</a></li>
+                <li><a href="#" class="menu-link" id="menu-link-1">Contacts</a></li>
+                <li><a href="#" class="menu-link menu-2" id="menu-link-2" onclick="addItem()">Graduation</a></li>
+                <li><a href="https://vk.com/" class="menu-link">About us</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="main-text" id="tag_main">
+        <span class="span_ant">Мир глазами муравья</span>
+        <h1>Погрузитесь в представления с участием муравья!<span>Не пожалеете!</span></h1>
+        <button class="button" id="button_num1" style="cursor: pointer">
+            Проверить
+        </button>
+    </div>
+    <p>Приходите. Это бесплатно!</p>
+    <button type="button" class="header-button-call">
+        Обратиться к нам!
+    </button>
+    <div class="main_btn">
+        <ul id="list">
+            <li class="item-button">
+                Добрый вечер!
+            </li>
+        </ul>
+        <button type="button" class="btn1" id="btn1">
+            Добавить
+        </button>
+        <button type="button" class="btn2" id="btn2">
+            Удалить
+        </button>
+    </div>
+    <div class="popup">
+        <div class="close">&times;</div>
+        <p>Все дела на сегодня выполнены!</p>
+    </div>
+
+    <div class="overlay">
+        <div class="popups">
+            <div class="popups-title">
+                Форма обратной связи
+            </div>
+            <!-- /.popup-title -->
+            <div class="popups-close">&times;</div>
+            <!-- /.popup-close -->
+            <div class="popups-form">
+                <form action="#" class="main-form">
+                    <div class="popup-form-header">
+                        Получите онлайн курсы по программированию! <span>Совершенно бесплатно!</span>
+                        <label for="phone" class="popup-form__label">
+                            Введите ваш номер телефона:
+                        </label>
+                        <input type="tel" class="popup-form__input" name="phone" required>
+                        <button class="button popup-form__btn">
+                            Оставить заявку.
+                        </button>
+                        <div class="popup-form__note" id="note">
+                            Перезвоним через 5 минут.
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <!-- /.popup-form -->
+        </div>
+        <!-- /.popup -->
+    </div>
+    <!-- /.overlay -->
+</div>
+<script src="scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function (){
+        $(".header-button-call").on("mouseenter", function (){
+            $(".overlay").show()
+        });
+        $(".popups-close").on("click", function (){
+            $(".overlay").hide()
+        });
+    });
+    $("body a[href^='https://']").css("border", "solid 3px red")
+    $("h1").mouseenter(function (){
+        $(this).toggleClass("span_ant")
+    });
+    $("h1").mouseleave(function (){
+        $(this).toggleClass("span_ant")
+    });
+
+    $("input").keyup(function (){
+       $("note").text(',' + $(this).val());
+    });
+
+</script>
+</body>
+</html>
+
+

@@ -22,7 +22,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
 class CategoriesListView(generics.ListAPIView):
 
-    serializer_class = CategoriesListSerializer
+    serializer_class = CategoriesSerializer
 
     def get_queryset(self):
         categories = Category.objects.all()

@@ -3,7 +3,7 @@
 {% load menu %}
 {% load widget %}
 {% block title %}{{ post.title }}{% endblock %}
-{% load similar %}
+{% load recent %}
 
 {% block content %}
 
@@ -44,7 +44,7 @@
                                         {% endfor %}
                                     </ul>
                                 </div> <!--End widget-->
-                                {% get_similar %}
+                                {% get_recent %}
                             </div> <!-- /.blog -->
                         </div> <!-- /.inner-col -->
 

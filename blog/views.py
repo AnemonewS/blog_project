@@ -1,20 +1,19 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, CreateView
 from django.contrib.auth import login, logout
-from django.contrib import messages
 from .models import *
-from .forms import UserRegisterForm, LoginForm, ContactForm, AddNews
+from .forms import UserRegisterForm, LoginForm, ContactForm, AddNewsForm
 
 
 class AddNewsView(CreateView):
-    template_name = "Portfolio/add_news_form.html"
-    form_class = AddNews
+    template_name = "Portfolio/add_news.html"
+    form_class = AddNewsForm
     context_object_name = "form"
 
 
 class RegisterView(CreateView):
-    template_name = "Portfolio/registration_form.html"
+    template_name = "Portfolio/register_form.html"
     form_class = UserRegisterForm
     context_object_name = "form"
     success_url = reverse_lazy('login')
@@ -59,9 +58,9 @@ class GetTagsView(ListView):
         return Post.objects.filter(tags__slug=self.kwargs["slug"])
 
 
-def similar_post(request, similar_id):
-    similar = Similar.objects.get(id=similar_id)
-    return render(request, "Portfolio/similar_post.html", {"similar": similar})
+def recent_post(request, recent_id):
+    recent = Similar.objects.get(id=recent_id)
+    return render(request, "Portfolio/recent_post.html", {"recent": recent})
 
 
 def view_post(request, views_id):
@@ -70,7 +69,7 @@ def view_post(request, views_id):
 
 
 class GetCategoryView(ListView):
-    template_name = "Portfolio/category_get.html"
+    template_name = "Portfolio/get_category.html"
     context_object_name = "category_get"
     paginate_by = 3
     allow_empty = False
@@ -79,7 +78,7 @@ class GetCategoryView(ListView):
         return Post.objects.select_related("category").filter(category__slug=self.kwargs["slug"])
 
 
-class SearchField(ListView):
+class SearchFieldView(ListView):
     template_name = '_inc/_search_field.html'
     context_object_name = 'results'
     paginate_by = 2
@@ -94,13 +93,8 @@ class SearchField(ListView):
         return context
 
 
-def get_info(request):
-    post = Post.objects.all()
-
-    return render(request, 'Portfolio/your_opinion.html', {"post": post})
-
-
 class FeedbackView(CreateView):
     form_class = ContactForm
     success_url = '/'
-    template_name = 'Portfolio/your_opinion.html'
+    template_name = 'Portfolio/feedback.html'
+
